@@ -12,7 +12,7 @@ end
 
 
 return require('packer').startup(function()
-    -- Packer сам себя
+    -- Packer itself
     use 'wbthomason/packer.nvim'
 
     use {
@@ -23,10 +23,6 @@ return require('packer').startup(function()
     use {
         'scrooloose/nerdtree'
     }
-    --use {
-    --    'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons',
-    --    config = function() require'nvim-tree'.setup {} end,
-    --}
 
     use {
         'nvim-telescope/telescope.nvim',
@@ -44,27 +40,6 @@ return require('packer').startup(function()
         config = setup_from('plugin_settings/startify'),
     }
 
-    -- use {
-    --     'nvim-lualine/lualine.nvim',
-    --     requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    --     config = function() require('lualine').setup{
-    --         options = {
-    --             theme = 'horizon',
-    --         },
-    --
-    --         sections = {
-    --             theme = 'horizon',
-    --             lualine_c = {
-    --                 {
-    --                     'filename',
-    --                     file_status = true,   -- displays file status (readonly status, modified status)
-    --                     path = 1,             -- 0 = just filename, 1 = relative path, 2 = absolute path
-    --                     shorting_target = 50, -- Shortens path to leave 40 space in the window
-    --                 }
-    --             }
-    --         }
-    --     } end,
-    -- }
     use {
         'ojroques/nvim-hardline',
         config = setup_from('plugin_settings/hardline')

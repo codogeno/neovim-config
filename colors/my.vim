@@ -42,7 +42,7 @@ hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
 hi Title	ctermfg=5 guifg=indianred
 "hi Visual	gui=none guifg=khaki guibg=olivedrab
 "hi Visual	term=reverse cterm=reverse ctermbg=242 gui=none guibg=SkyBlue guifg=DarkBlue
-hi Visual ctermfg=242 ctermbg=0 cterm=reverse gui=bold guifg=White guibg=#70506d
+hi Visual ctermfg=242 ctermbg=0 cterm=reverse gui=bold guifg=White guibg=#30507d
 "hi Visual	cterm=reverse
 hi VisualNOS	cterm=bold,underline
 hi WarningMsg	ctermfg=1 guifg=salmon

@@ -36,12 +36,12 @@ opt.indentexpr = ''
 g.loaded_matchparen = 1 -- diable standart match paren plugin as of alternative plugin
 
 -----------------------------------------------------------
--- Цветовая схема
+-- Color scheme
 -----------------------------------------------------------
 opt.termguicolors = true      --  24-bit RGB colors
 cmd 'colorscheme my'
 -----------------------------------------------------------
--- Табы и отступы
+-- Tabs and indents
 -----------------------------------------------------------
 cmd([[
 filetype indent plugin on
@@ -89,77 +89,6 @@ cmd [[
 -- autocomplete
 vim.o.completeopt = "menuone,noselect"
 
---opt.termguicolors = true
-
-
----- setup Vim itself
-----
-----set noerrorbells
-----set novisualbell
-
----- opt.noeb vb t_vb=
-
---lang messages en_US.UTF-8
---set nocompatible  " Чтоб работали стрелки на FreeBSD
---set sessionoptions-=options
---set autowrite
---set nowrap
-
---set fileformats=unix,dos
-
---set bs=2
-
---set autoindent
-
---set expandtab
---set softtabstop=4
---set smarttab
---set shiftwidth=4
---set scrolloff=3
-
---set ignorecase smartcase "Игнорировать регистр букв при поиске
---set incsearch
-
---set hidden " allow open new buf without saving changed buffer
-
---set mouse=a
---set laststatus=2
---set showcmd
-
---set statusline=%<%f%h%m%r%=%l,%v\ \ %b/0x%B\ \ %V\ %P
---set hlsearch
-
---set lazyredraw  " Не перерисовывать экран посреди макроса
---" set foldcolumn=2  " Боковая колонка со свёрнутыми блоками
-
-
---nnoremap * *N
-
-
---let g:vim_syntax_folding = 1
---let g:xml_syntax_folding = 1
---au FileType xml setlocal foldmethod=syntax
-
---let docbk_type="xml"
-
---set fileencodings=utf-8,cp1251,koi8-r,cp866 " список кодировок файлов для автоопределения
-
---if has("win32")
---    set guifont=ter-c16n
---else
---    set guifont=Terminus\ (TTF)\ Medium\ 15
---    "set guifont=Fira\ Code\ Line
---endif
-
---set foldmethod=indent
---set nofoldenable
-
---exec "colorscheme" "my_desert"
-
---set listchars=tab:→\ ,trail:·    " подсветка табов и пробелов в конце строки
---set list                        " включена по дефолту
-
---set indentexpr=
 
 --"autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp,*.dba set cindent
 --"autocmd FileType cpp set cindent
