@@ -40,5 +40,5 @@ require('lspconfig').pylsp.setup{
 
 require('lspconfig').gopls.setup{
     on_attach = on_attach,
-    root_dir = root_pattern("arcadia"),
+    root_dir = root_pattern("."),
 }
