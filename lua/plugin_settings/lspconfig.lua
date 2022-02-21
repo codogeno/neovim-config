@@ -1,4 +1,5 @@
-root_pattern = require'lspconfig'.util.root_pattern
+local root_pattern = require('lspconfig').util.root_pattern
+local find_git_ancestor = require('lspconfig').util.find_git_ancestor
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -23,22 +24,54 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+
 require('lspconfig').pylsp.setup{
     on_attach = on_attach,
     -- capabilities = capabilities,
+    root_dir = function(fname)
+        local root_files = {
+            'ya.conf',
+        }
+        return root_pattern(unpack(root_files))(fname) or find_git_ancestor(fname)
+    end,
+
     settings = {
         pylsp = {
-            configurationSources = {'flake8'},
-            --    plugins = {
-            -- 		 flake8 = {
-            -- 			 config = ...
-            -- 		 }
-            -- 	}
+            configurationSources = {"flake8"},
+            plugins = {
+                jedi_completion = {enabled = true},
+                jedi_hover = {enabled = true},
+                jedi_references = {enabled = true},
+                jedi_signature_help = {enabled = true},
+                jedi_symbols = {enabled = true, all_scopes = true},
+                pycodestyle = {enabled = false},
+                flake8 = {
+                    enabled = true,
+                    ignore = {},
+                    maxLineLength = 90,
+                },
+                mypy = {enabled = false},
+                isort = {enabled = false},
+                yapf = {enabled = false},
+                pylint = {enabled = false},
+                pydocstyle = {enabled = false},
+                mccabe = {enabled = false},
+                preload = {enabled = false},
+                rope_completion = {enabled = false}
+            }
         }
-    }
+    },
 }
+
+-- require('lspconfig').pyright.setup{
+--     settings = {
+--         python = {
+--             pythonPath = '/home/dude/games/admin/.venv/bin/python3'
+--         }
+--     }
+-- }
 
 require('lspconfig').gopls.setup{
     on_attach = on_attach,
-    root_dir = root_pattern("."),
+    root_dir = root_pattern(".go_project"),
 }

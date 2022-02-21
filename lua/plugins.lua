@@ -88,4 +88,17 @@ return require('packer').startup(function()
         'hrsh7th/nvim-compe',
         config=setup_from('plugin_settings/compe'),
     }
+
+    use 'mfussenegger/nvim-dap'
+
+    use 'rcarriga/nvim-dap-ui'
+
+    use 'theHamsta/nvim-dap-virtual-text'
+
+    use {
+        'ray-x/go.nvim',
+        config = simple_setup('go'),
+        requires = {'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui'},
+    }
+
 end)
