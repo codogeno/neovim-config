@@ -76,6 +76,10 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 --augroup end
 --]], false)
 
+-- quickfix window will fill fulll width
+cmd [[
+    autocmd FileType qf wincmd J
+]]
 
 -- close quickfix window after jumping
 cmd [[
