@@ -45,6 +45,8 @@ my.nmap{
     -- Telescope bindings
     ['<leader>ff'] = [[<cmd>lua require('telescope.builtin').find_files()<CR>]];
     ['<leader>fg'] = [[<cmd>lua require('telescope.builtin').live_grep()<CR>]];
+    ['<leader>fi'] = [[<cmd>lua require('telescope.builtin').grep_string()<CR>]];
+    ['<leader>ft'] = [[<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>]];
 
 }
 
