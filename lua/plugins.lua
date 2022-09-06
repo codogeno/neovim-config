@@ -30,7 +30,8 @@ return require('packer').startup(function()
         requires = {
             {'nvim-lua/plenary.nvim'}
         },
-        config = simple_setup('telescope'),
+        -- config = simple_setup('telescope'),
+        config = setup_from('plugin_settings/telescope'),
     }
 
     use 'codogeno/nvim-rg'
@@ -99,6 +100,36 @@ return require('packer').startup(function()
         'ray-x/go.nvim',
         config = simple_setup('go'),
         requires = {'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui'},
+    }
+
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
+    use {
+        "0x00-ketsu/easymark.nvim",
+        requires = "folke/trouble.nvim",
+    }
+
+    use {
+        'ThePrimeagen/harpoon',
+
+        requires = {'nvim-lua/plenary.nvim'},
+        config = function()
+            require("harpoon").setup({
+                menu = {
+                    width = vim.api.nvim_win_get_width(0) - 4,
+                }
+            })
+        end
     }
 
 end)

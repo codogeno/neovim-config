@@ -94,6 +94,7 @@ my.nmap {
 
     -- Close buffer
     ['<A-c>'] = ':BufferClose<CR>';
+    ['<S-A-c>'] = ':BufferCloseAllButPinned<CR>';
 
     -- Magic buffer-picking mode
     ['<C-p>'] = ':BufferPick<CR>';

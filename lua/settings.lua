@@ -83,7 +83,7 @@ cmd [[
 
 -- close quickfix window after jumping
 cmd [[
-    autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+    autocmd FileType qf nnoremap <buffer> '<C-CR>' <CR>:cclose<CR>
 ]]
 
 cmd [[
