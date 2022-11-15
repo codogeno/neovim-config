@@ -48,11 +48,14 @@ my.nmap{
     ['<leader>fi'] = [[<cmd>lua require('telescope.builtin').grep_string()<CR>]];
     ['<leader>ft'] = [[<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>]];
     ['<leader>fl'] = [[<cmd>lua require('telescope.builtin').resume()<CR>]];
+    ['<leader>fr'] = [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]];
     ['<leader>fm'] = [[:Telescope harpoon marks<CR>]];
 
     -- Harpoon marks
     ['mm'] = '<cmd>lua require("harpoon.mark").add_file(); print("Saved!")<CR>';
     ['ml'] = '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>';
+
+    --['C-S-F9'] = [[:AsyncRun ya]]
 }
 
 -- theese are not silent

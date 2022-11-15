@@ -32,8 +32,12 @@ opt.signcolumn = 'yes:1'
 opt.wildmode = 'longest:full,full'
 opt.joinspaces = false
 opt.indentexpr = ''
+--opt.belloff='backspace,cursor,copy,ctrlg,esc,insertmode,register,spell,wildmode'
+opt.belloff='backspace,cursor,esc,error'
 
 g.loaded_matchparen = 1 -- diable standart match paren plugin as of alternative plugin
+
+
 
 -----------------------------------------------------------
 -- Color scheme

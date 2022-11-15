@@ -132,4 +132,27 @@ return require('packer').startup(function()
         end
     }
 
+    -- use {
+    --     'ojroques/nvim-buildme',
+    -- }
+
+    use {
+        "j-hui/fidget.nvim",
+        event = "BufReadPre",
+        config = function()
+            require("fidget").setup {}
+        end,
+    }
+
+    -- use {
+    --     'neomake/neomake',
+    -- }
+
+    use {
+        'skywind3000/asyncrun.vim',
+        config = function()
+            vim.g.asyncrun_bell = 1
+            vim.g.asyncrun_open = 8
+        end,
+    }
 end)

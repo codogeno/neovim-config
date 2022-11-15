@@ -71,7 +71,52 @@ require('lspconfig').pylsp.setup{
 --     }
 -- }
 
+
+local util = require "lspconfig.util"
+local filter = {
+  "-library/python",
+  "-library/cpp",
+  "-contrib",
+  "+contrib/go",
+  "-sandbox",
+  "-logfeller",
+  "-kikimr/public/sdk/python",
+  "-ydb/public/sdk/python",
+}
+if string.find(vim.api.nvim_buf_get_name(0), "/arcadia") == nil then
+  filter = {}
+end
+
 require('lspconfig').gopls.setup{
     on_attach = on_attach,
-    root_dir = root_pattern(".go_project"),
+
+    cmd = {
+        "gopls",
+        "-remote=auto",
+        "-logfile=auto",
+        "-debug=:0",
+        "-remote.listen.timeout=30m",
+        "-remote.debug=:0",
+        "-rpc.trace",
+    },
+    root_dir = util.root_pattern("ya.make", ".go_project", "go.mod", ".git"),
+    settings = {
+        gopls = {
+            analyses = { unusedparams = true, unusedwrite = true, shadow = true },
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+            staticcheck = true,
+            usePlaceholders = true,
+            directoryFilters = filter,
+            expandWorkspaceToModule = false,
+            experimentalWorkspaceModule = false,
+        },
+    },
 }
