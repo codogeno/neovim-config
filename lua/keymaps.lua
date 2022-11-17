@@ -71,6 +71,8 @@ my.imap{
     ['<C-F9>']  = '<Esc>:wa<cr>:mak<cr>';
     ['<F33>']  = '<Esc>:wa<cr>:mak<cr>';
     ['<Home>']  = '<Esc>^';
+    ['<A-l>'] = '<Right>';
+    ['<A-h>'] = '<Left>';
 }
 
 my.nmap{
