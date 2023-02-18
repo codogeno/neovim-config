@@ -94,8 +94,13 @@ cmd [[
     autocmd FileType python set indentexpr=
 ]]
 
+cmd [[
+    autocmd BufRead,BufNewFile ya.make   setfiletype bash
+]]
+
 -- autocomplete
 vim.o.completeopt = "menuone,noselect"
+vim.lsp.set_log_level("OFF")
 
 
 --"autocmd BufRead,BufNewFile *.c,*.h,*.cpp,*.hpp,*.dba set cindent

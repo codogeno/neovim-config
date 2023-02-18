@@ -43,12 +43,13 @@ my.nmap{
     -- ['<S-Y>'] = [[ "+y ]]
 
     -- Telescope bindings
-    ['<leader>ff'] = [[<cmd>lua require('telescope.builtin').find_files()<CR>]];
-    ['<leader>fg'] = [[<cmd>lua require('telescope.builtin').live_grep()<CR>]];
-    ['<leader>fi'] = [[<cmd>lua require('telescope.builtin').grep_string()<CR>]];
+    ['<leader>ff'] = [[<cmd>lua require('telescope.builtin').find_files({sorting_strategy="ascending"})<CR>]];
+    ['<leader>fg'] = [[<cmd>lua require('telescope.builtin').live_grep({sorting_strategy="ascending"})<CR>]];
+    ['<leader>fw'] = [[<cmd>lua require('telescope.builtin').grep_string({word_match='-w';sorting_strategy="ascending"})<CR>]];
     ['<leader>ft'] = [[<cmd>lua require('telescope.builtin').lsp_type_definitions()<CR>]];
+    ['<leader>fi'] = [[<cmd>lua require('telescope.builtin').lsp_implementations()<CR>]];
     ['<leader>fl'] = [[<cmd>lua require('telescope.builtin').resume()<CR>]];
-    ['<leader>fr'] = [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]];
+    ['<leader>fr'] = [[<cmd>lua require('telescope.builtin').lsp_references()<CR>]];
     ['<leader>fm'] = [[:Telescope harpoon marks<CR>]];
 
     -- Harpoon marks

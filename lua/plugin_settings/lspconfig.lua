@@ -63,29 +63,17 @@ require('lspconfig').pylsp.setup{
     },
 }
 
--- require('lspconfig').pyright.setup{
---     settings = {
---         python = {
---             pythonPath = '/home/dude/games/admin/.venv/bin/python3'
---         }
---     }
--- }
-
-
 local util = require "lspconfig.util"
 local filter = {
-  "-library/python",
-  "-library/cpp",
-  "-contrib",
-  "+contrib/go",
-  "-sandbox",
-  "-logfeller",
-  "-kikimr/public/sdk/python",
-  "-ydb/public/sdk/python",
+  "-/home/dude/games/go/arcadia/",
+  "+/home/dude/games/go/arcadia/games/backend",
 }
-if string.find(vim.api.nvim_buf_get_name(0), "/arcadia") == nil then
-  filter = {}
-end
+
+-- print("NAME: ", vim.api.nvim_buf_get_name(0))
+-- if string.find(vim.api.nvim_buf_get_name(0), "/arcadia") == nil then
+--     filter = {}
+--     --print("EMPTY FILTER")
+-- end
 
 require('lspconfig').gopls.setup{
     on_attach = on_attach,
@@ -93,13 +81,16 @@ require('lspconfig').gopls.setup{
     cmd = {
         "gopls",
         "-remote=auto",
-        "-logfile=auto",
-        "-debug=:0",
+        --"-logfile=auto",
+        "-logfile=/home/dude/tmp/gopls.log",
+        --"-debug=:1",
         "-remote.listen.timeout=30m",
         "-remote.debug=:0",
         "-rpc.trace",
+        "--debug=:6060"
     },
-    root_dir = util.root_pattern("ya.make", ".go_project", "go.mod", ".git"),
+    --root_dir = util.root_pattern(".arcadia.root", ".git"),
+    root_dir = util.root_pattern(".go_project", ".git"),
     settings = {
         gopls = {
             analyses = { unusedparams = true, unusedwrite = true, shadow = true },
@@ -116,7 +107,6 @@ require('lspconfig').gopls.setup{
             usePlaceholders = true,
             directoryFilters = filter,
             expandWorkspaceToModule = false,
-            experimentalWorkspaceModule = false,
         },
     },
 }

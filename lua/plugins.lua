@@ -30,7 +30,6 @@ return require('packer').startup(function()
         requires = {
             {'nvim-lua/plenary.nvim'}
         },
-        -- config = simple_setup('telescope'),
         config = setup_from('plugin_settings/telescope'),
     }
 
@@ -85,10 +84,10 @@ return require('packer').startup(function()
 
     --use 'hrsh7th/cmp-nvim-lsp'
 
-    use {
-        'hrsh7th/nvim-compe',
-        config=setup_from('plugin_settings/compe'),
-    }
+    -- use {
+    --     'hrsh7th/nvim-compe',
+    --     config=setup_from('plugin_settings/compe'),
+    -- }
 
     use 'mfussenegger/nvim-dap'
 
@@ -96,11 +95,11 @@ return require('packer').startup(function()
 
     use 'theHamsta/nvim-dap-virtual-text'
 
-    use {
-        'ray-x/go.nvim',
-        config = simple_setup('go'),
-        requires = {'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui'},
-    }
+    -- use {
+    --     'ray-x/go.nvim',
+    --     config = simple_setup('go'),
+    --     requires = {'mfussenegger/nvim-dap', 'rcarriga/nvim-dap-ui'},
+    -- }
 
     use {
         "folke/trouble.nvim",
@@ -132,27 +131,63 @@ return require('packer').startup(function()
         end
     }
 
-    -- use {
-    --     'ojroques/nvim-buildme',
-    -- }
+    use {
+        'onsails/lspkind-nvim',
+        config = setup_from('plugin_settings/lspkind'),
+    }
 
     use {
-        "j-hui/fidget.nvim",
-        event = "BufReadPre",
-        config = function()
-            require("fidget").setup {}
-        end,
-    }
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'L3MON4D3/LuaSnip',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-emoji',
+            'hrsh7th/cmp-nvim-lsp-signature-help',
+            'hrsh7th/cmp-nvim-lua'
+        },
+        config=setup_from('plugin_settings/cmp'),
+	}
+
+    -- -- use {
+    -- --     'ojroques/nvim-buildme',
+    -- -- }
+    --
+
+    --
+    -- Standalone UI for nvim-lsp progress. Eye candy for the impatient.
+    --
+    -- use {
+    --     "j-hui/fidget.nvim",
+    --     event = "BufReadPre",
+    --     config = function()
+    --         require("fidget").setup {}
+    --     end,
+    -- }
+
+    -- use 'ray-x/go.nvim'
+    --
+    -- use 'ray-x/guihua.lua'
+
+    -- use({
+    --     'ray-x/navigator.lua',
+    --     requires = {
+    --         { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+    --         { 'neovim/nvim-lspconfig' },
+    --     },
+    --     config = setup_from('plugin_settings/navigator'),
+    -- })
 
     -- use {
     --     'neomake/neomake',
     -- }
 
-    use {
-        'skywind3000/asyncrun.vim',
-        config = function()
-            vim.g.asyncrun_bell = 1
-            vim.g.asyncrun_open = 8
-        end,
-    }
+    -- use {
+    --     'skywind3000/asyncrun.vim',
+    --     config = function()
+    --         vim.g.asyncrun_bell = 1
+    --         vim.g.asyncrun_open = 8
+    --     end,
+    -- }
 end)
