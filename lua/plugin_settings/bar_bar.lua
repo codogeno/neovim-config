@@ -1,5 +1,5 @@
 -- Set barbar's options
-vim.g.bufferline = {
+require'barbar'.setup {
   -- Enable/disable animations
   animation = true,
 
@@ -24,7 +24,17 @@ vim.g.bufferline = {
   -- Enable/disable icons
   -- if set to 'numbers', will show buffer index in the tabline
   -- if set to 'both', will show buffer index and icons in the tabline
-  icons = 'numbers',
+  icons = { 
+      buffer_index = true, 
+      filetype = { enabled = false },
+      pinned = { button = '車'},
+      separator = { left = '▎' },
+      inactive = {
+        separator = { left = '▎', }
+      },
+      button = '',
+      modified = { buttonb = '*'},
+  },
 
   -- If set, the icon color will follow its corresponding buffer
   -- highlight group. By default, the Buffer*Icon group is linked to the
@@ -33,13 +43,8 @@ vim.g.bufferline = {
   icon_custom_colors = false,
 
   -- Configure icons on the bufferline.
-  icon_separator_active = '▎',
   -- icon_separator_active = '|',
-  icon_separator_inactive = '▎',
-  icon_close_tab = '',
   -- icon_close_tab_modified = '●';
-  icon_close_tab_modified = '*';
-  icon_pinned = '車',
 
   -- If true, new buffers will be inserted at the start/end of the list.
   -- Default is to insert after current buffer.

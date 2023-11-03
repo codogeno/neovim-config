@@ -78,6 +78,10 @@ hi SignColumn	cterm=bold ctermfg=12 gui=bold guifg=fg guibg=none
 
 hi default BookmarkCol ctermfg=blue ctermbg=lightblue cterm=bold guifg=DarkBlue guibg=#d0d0ff gui=bold
 
+hi NormalFloat  guifg=grey70 guibg=grey15
+hi FloatBorder  guifg=grey25 guibg=grey15
+hi FloatTitle  guifg=#07ff00 guibg=#007f7f
+
 " Colors for bar-bar plugin
 
 hi BufferActive ctermfg=1 gui=none guibg=#202020 guifg=fg

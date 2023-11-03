@@ -15,16 +15,31 @@ cmp.setup{
 
 		-- Вызов меню автодополнения
 		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<CR>'] = cmp.config.disable,                      -- Я не люблю, когда вещи автодополняются на <Enter>
-		['<C-y>'] = cmp.mapping.confirm({ select = true }), -- А вот на <C-y> вполне ок
+		--['<CR>'] = cmp.config.enable,
+		--['<C-y>'] = cmp.mapping.confirm({ select = true }), -- А вот на <C-y> вполне ок
 
 		-- Используем <C-e> для того чтобы прервать автодополнение
 		['<C-e>'] = cmp.mapping({
 			i = cmp.mapping.abort(), -- Прерываем автодополнение
 			c = cmp.mapping.close(), -- Закрываем автодополнение
 		}),
-		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+		['<M-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+		['<M-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+
+		['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+		['<Down>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+
+        ['<Tab>'] = cmp.mapping({
+            i = function(fallback)
+                if cmp.visible() then
+                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+                else
+                    fallback()
+                end
+            end,
+            -- s = cmp.mapping.confirm({ select = true }),
+            --c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        }),
 	},
 
 	sources = cmp.config.sources({
@@ -39,7 +54,7 @@ cmp.setup{
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = 'symbol', -- show only symbol annotations
-			maxwidth = 50,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			maxwidth = 60,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 		})
 	}
 }

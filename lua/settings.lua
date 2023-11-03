@@ -37,6 +37,8 @@ opt.belloff='backspace,cursor,esc,error'
 
 g.loaded_matchparen = 1 -- diable standart match paren plugin as of alternative plugin
 
+g.go_gopls_local = 'a.yandex-team.ru'
+
 
 
 -----------------------------------------------------------
@@ -114,3 +116,4 @@ vim.lsp.set_log_level("OFF")
 
 require('plugin_settings/bar_bar')
 require('plugin_settings/NERDTree')
+require('go').setup()
