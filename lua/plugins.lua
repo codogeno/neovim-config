@@ -133,6 +133,17 @@ return require('packer').startup(function(use)
     }
 
     --
+    -- Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+    --
+    use {
+        'folke/neodev.nvim';
+
+        config = function()
+            require("neodev").setup({})
+        end;
+    }
+
+    --
     -- Configs for the Nvim LSP client
     --
     use {
@@ -202,6 +213,7 @@ return require('packer').startup(function(use)
                 -- your configuration comes here
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
+                width=40,
             }
         end
     }
@@ -257,12 +269,12 @@ return require('packer').startup(function(use)
     -- * Automatically expand width of the current window;
     -- * Maximizes and restores the current window.
     --
-    use { "anuvyklack/windows.nvim",
-       requires = "anuvyklack/middleclass",
-       config = function()
-          require('windows').setup()
-       end
-    }
+    -- use { "anuvyklack/windows.nvim",
+    --    requires = "anuvyklack/middleclass",
+    --    config = function()
+    --       -- require('windows').setup()
+    --    end
+    -- }
 
     -- -- TrailBlazer enables you to seemlessly move through important project marks as quickly
     -- -- and efficiently as possible to make your workflow blazingly fast
@@ -312,7 +324,6 @@ return require('packer').startup(function(use)
     --
     use 'ray-x/guihua.lua'
 
-
     -- use {
     --     'neomake/neomake',
     -- }
@@ -324,4 +335,58 @@ return require('packer').startup(function(use)
     --         vim.g.asyncrun_open = 8
     --     end,
     -- }
+
+    --
+    -- Split and join arguments
+    --
+    use {
+        'echasnovski/mini.nvim';
+        config = function()
+            require('mini.splitjoin').setup()
+        end;
+    }
+
+    --
+    -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+    --
+    use {
+        'simrat39/symbols-outline.nvim';
+    }
+
+    --
+    -- Nvim-plugin for doing the opposite of join-line (J) of arguments, powered by treesitter. 
+    --
+    use {
+        'AckslD/nvim-trevJ.lua',
+        --config = 'require("trevj").setup()',  -- optional call for configurating non-default filetypes etc
+        config = function()
+            local trevj = require("trevj")
+            trevj.setup()  -- optional call for configurating non-default filetypes etc
+            vim.api.nvim_create_user_command("SplitArgs", function() trevj.format_at_cursor() end , {})
+        end
+
+        -- uncomment if you want to lazy load
+        -- module = 'trevj',
+
+        -- an example for configuring a keybind, can also be done by filetype
+        -- setup = function()
+        --   vim.keymap.set('n', '<leader>j', function()
+        --     require('trevj').format_at_cursor()
+        --   end)
+        -- end,
+    }
+
+    --
+    -- A code outline window for skimming and quick navigation
+    --
+    use({
+        "stevearc/aerial.nvim",
+        config = function()
+            require("aerial").setup({
+                layout = {
+                    default_direction = "prefer_left"
+                }
+            })
+        end,
+    })
 end)

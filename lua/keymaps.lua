@@ -1,4 +1,4 @@
-my = require('helpers')
+local my = require('helpers')
 
 my.map{
     ['<F5>']        = ':WinFullScreen<CR>';
@@ -47,6 +47,9 @@ my.nmap{
 
     ['<C-Up>']      = '<C-y>';
     ['<C-Down>']      = '<C-e>';
+
+    ['<A-k>'] = '<C-y>';
+    ['<A-j>'] = '<C-e>';
 
     -- ['<S-Y>'] = [[ "+y ]]
 
@@ -109,3 +112,9 @@ my.imap{
     ['<A-l>'] = '<Right>';
     ['<A-h>'] = '<Left>';
 }
+
+-- Toggle trouble
+vim.keymap.set("n", "<A-t>", function() require("trouble").toggle() end, {desc="Toggle trouble's window"})
+
+-- Toggle aerial
+vim.keymap.set("n", "<A-m>", "<cmd>AerialToggle!<CR>")

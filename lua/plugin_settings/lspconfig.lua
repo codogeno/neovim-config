@@ -132,3 +132,11 @@ require('lspconfig').gopls.setup{
         },
     },
 }
+
+
+--
+-- neodev
+-- 
+require('neodev').setup({})
+require('lspconfig').lua_ls.setup({})
+

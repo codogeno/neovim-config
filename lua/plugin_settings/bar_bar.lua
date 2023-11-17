@@ -80,6 +80,7 @@ my = require('helpers')
 my.nmap {
     ['<A-,>'] =  ':BufferPrevious<CR>';
     ['<A-.>'] =  ':BufferNext<CR>';
+    ['<C-A-0>'] =  ':BufferMoveStart<CR>';
 
     -- Re-order to previous/next
     ['<A-<>'] =  ':BufferMovePrevious<CR>';
