@@ -54,7 +54,7 @@ hi WildMenu	ctermfg=0 ctermbg=3
 " syntax highlighting groups
 hi Comment	ctermfg=darkcyan ctermfg=6 guifg=#757575
 hi Constant	ctermfg=blue ctermfg=blue guifg=SkyBlue
-hi Identifier	cterm=bold guifg=#44efef gui=bold
+hi! link Identifier	Normal
 hi Statement	ctermfg=3 guifg=#c4a000
 hi PreProc	ctermfg=5 guifg=indianred
 hi Type	ctermfg=71 guifg=#5faf5f
@@ -107,6 +107,8 @@ hi pmenusel guibg=#51506d guifg=White gui=bold
 hi ColorColumn ctermbg=1 guibg=#200000
 
 hi htmlBoldItalic guibg=bg gui=bold guifg=DarkCyan
+
+hi DiagnosticWarn guifg=#225315
 "
 "
 " "vim: sw=4

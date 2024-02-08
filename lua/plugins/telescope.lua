@@ -33,13 +33,17 @@ return {
         _('n', '<leader>ffc', function() builtin.find_files({search_file=vim.call('expand','<cword>'); sorting_strategy="ascending"}) end)
         _('n', '<leader>fg', function() builtin.live_grep({sorting_strategy="ascending"}) end)
         _('n', '<leader>fw', function() builtin.grep_string({word_match='-w';sorting_strategy="ascending"}) end)
-        _('n', '<leader>fwc', function() builtin.grep_string({word_match='-w';grep_open_files=true;sorting_strategy="ascending"}) end)
+        -- _('n', '<leader>fwc', function() builtin.grep_string({word_match='-w';grep_open_files=true;sorting_strategy="ascending"}) end)
+        _('n', '<leader>fwc', function() builtin.grep_string({word_match='-w';search_dirs={vim.fn.expand("%:p")};sorting_strategy="ascending"}) end)
         _('n', '<leader>ft', function() builtin.lsp_type_definitions() end)
         _('n', '<leader>fi', function() builtin.lsp_implementations({sorting_strategy="ascending"}) end)
         _('n', '<leader>fl', function() builtin.resume() end)
         _('n', '<leader>fr', function() builtin.lsp_references({sorting_strategy="ascending"}) end)
         _('n', '<leader>fb', function() builtin.buffers() end)
         _('n', '<leader>fm', [[:Telescope harpoon marks<CR>]])
+
+        -- Search for current buffer only
+        _('n', '<leader>fgc', function() builtin.live_grep({search_dirs={vim.fn.expand("%:p")}, sorting_strategy="ascending"}) end)
     end,
 }
 

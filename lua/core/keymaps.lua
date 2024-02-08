@@ -31,6 +31,7 @@ _('n', '<F23>',         ':botright copen<CR>')
 
 
 _('n', '<C-F9>',        ':wa<cr>:mak<cr>')
+_('n', '<F33>',         ':wa<cr>:mak<cr>')
 
 
 -- Quote a word
@@ -38,8 +39,8 @@ _('n', '<leader>"',     'viw<esc>a"<esc>bi"<esc>lel')
 _('n', "<leader>'",     "viw<esc>a'<esc>bi'<esc>lel")
 
     -- Move by indentifiers
-_('n', '<C-Right>',     [[:call search('\<\k\+\>')<CR>]])
-_('n', '<C-Left>',      [[:call search('\<\k\+\>', 'bW')<CR>]])
+_('n', '<C-Right>',     [[:call search('\<\k\+\>\|$')<CR>]], {silent=true})
+_('n', '<C-Left>',      [[:call search('\<\k\+\>', 'bW')<CR>]], {silent=true})
 
 _('n', 'Y', [[yy]])
 
@@ -56,3 +57,6 @@ _('n', '<A-j>',         '<C-e>')
 _('i', '<Home>',  '<Esc>^')
 _('i', '<A-l>', '<Right>')
 _('i', '<A-h>', '<Left>')
+
+_('n', '<C-j>', '<PageDown>')
+_('n', '<C-k>', '<PageUp>')

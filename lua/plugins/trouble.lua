@@ -10,11 +10,14 @@ return {
     },
 
     config = function()
-        require("trouble").setup {
+        local trouble = require("trouble")
+        trouble.setup {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
             width=40,
         }
+
+        vim.keymap.set("n", "<A-t>", function() trouble.toggle() end, {desc="Toggle trouble's window"})
     end
 }

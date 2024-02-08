@@ -3,5 +3,5 @@
 -- and Vim 8.0+ while you edit your text files, and acts as a Vim Language Server Protocol client.
 --
 return {
-    'dense-analysis/ale'
+    -- 'dense-analysis/ale'
 }

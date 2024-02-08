@@ -10,7 +10,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     --buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations({sorting_strategy="ascending"})<CR>', opts)
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    buf_set_keymap('n', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
     buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -41,7 +41,7 @@ local pylsp_config = function()
             return root_pattern(unpack(root_files))(fname) or find_git_ancestor(fname)
         end,
 
-        host_python = "/home/dude/games/admin/venv/bin/python3", -- TODO
+        -- host_python = "/home/dude/games/admin/venv/bin/python3", -- TODO
 
         settings = {
             pylsp = {
@@ -55,8 +55,11 @@ local pylsp_config = function()
                     pycodestyle = {enabled = false},
                     flake8 = {
                         enabled = true,
-                        ignore = {},
+                        ignore = {
+                            'ANN101'
+                        },
                         maxLineLength = 120,
+                        --config = '/home/dude/.config/flake8',
                     },
                     mypy = {enabled = false},
                     isort = {enabled = false},
@@ -64,8 +67,9 @@ local pylsp_config = function()
                     pylint = {enabled = false},
                     pydocstyle = {enabled = false},
                     mccabe = {enabled = false},
+                    pyflakes = {enabled = false},
                     preload = {enabled = false},
-                    rope_completion = {enabled = true}
+                    rope_completion = {enabled = true},
                 }
             }
         },
@@ -146,6 +150,9 @@ return {
         local util = require "lspconfig.util"
 
         lsp.pylsp.setup(pylsp_config())
+        -- lsp.pyright.setup{
+        --     root_dir=function() return '/home/dude/games/admin/arcadia' end
+        -- }
         lsp.gopls.setup(gopls_config())
 
         require('neodev').setup({})
