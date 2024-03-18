@@ -38,7 +38,7 @@ local pylsp_config = function()
             local root_files = {
                 'ya.conf',
             }
-            return root_pattern(unpack(root_files))(fname) or find_git_ancestor(fname)
+            return root_pattern(unpack(root_files))(fname) or find_git_ancestor(fname) or '.'
         end,
 
         -- host_python = "/home/dude/games/admin/venv/bin/python3", -- TODO
