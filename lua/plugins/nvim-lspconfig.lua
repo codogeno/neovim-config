@@ -25,6 +25,10 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+    if client.name == 'clangd' then
+        buf_set_keymap('n', '<F6>', '<cmd>ClangdSwitchSourceHeader<CR>', opts)
+    end
 end
 
 local pylsp_config = function()
@@ -78,27 +82,27 @@ local pylsp_config = function()
 end
 
 
-local filter = {
-    "-",
-    '-vendor',
-    '+vendor/github.com/ydb-platform/ydb-go-sdk/v3',
-    '+vendor/github.com/labstack/echo/v4',
-    '+vendor/github.com/stretchr/testify',
-    "+library/go",
-    "-library/python",
-    "-library/cpp",
-    "-contrib",
-    "+contrib/go",
-    "-sandbox",
-    "-logfeller",
-    "-kikimr/public/sdk/python",
-    "-ydb/public/sdk/python",
-    "+games/backend",
-}
-
-if string.find(vim.api.nvim_buf_get_name(0), "/arcadia") == nil then
-    filter = {}
-end
+-- local filter = {
+--     "-",
+--     '-vendor',
+--     '+vendor/github.com/ydb-platform/ydb-go-sdk/v3',
+--     '+vendor/github.com/labstack/echo/v4',
+--     '+vendor/github.com/stretchr/testify',
+--     "+library/go",
+--     "-library/python",
+--     "-library/cpp",
+--     "-contrib",
+--     "+contrib/go",
+--     "-sandbox",
+--     "-logfeller",
+--     "-kikimr/public/sdk/python",
+--     "-ydb/public/sdk/python",
+--     "+games/backend",
+-- }
+--
+-- if string.find(vim.api.nvim_buf_get_name(0), "/arcadia") == nil then
+--     filter = {}
+-- end
 
 local gopls_config = function()
     local root_pattern = require('lspconfig').util.root_pattern
@@ -140,6 +144,12 @@ local gopls_config = function()
     }
 end
 
+local function configure_cpp_lsp()
+    require('lspconfig').clangd.setup{
+        on_attach = on_attach,
+    }
+end
+
 --
 -- Configs for the Nvim LSP client
 --
@@ -148,7 +158,7 @@ return {
 
     config = function()
         local lsp = require('lspconfig')
-        local util = require "lspconfig.util"
+        -- local util = require "lspconfig.util"
 
         lsp.pylsp.setup(pylsp_config())
         -- lsp.pyright.setup{
@@ -158,6 +168,8 @@ return {
 
         require('neodev').setup({})
         lsp.lua_ls.setup({})
+
+        configure_cpp_lsp()
     end,
 }
 
