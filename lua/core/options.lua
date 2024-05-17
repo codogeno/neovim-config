@@ -15,6 +15,8 @@ opt.undofile = true                 -- Возможность отката на�
 opt.splitright = true               -- vertical split вправо
 opt.splitbelow = true               -- horizontal split вниз
 
+opt.timeoutlen = 400
+
 opt.mouse = 'a'
 opt.autowrite = true
 opt.autoindent = true
@@ -36,6 +38,8 @@ opt.indentexpr = ''
 opt.belloff='backspace,cursor,esc,error'
 
 g.loaded_matchparen = 1 -- diable standart match paren plugin as of alternative plugin
+
+opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
 
 g.go_gopls_local = 'a.yandex-team.ru'
 

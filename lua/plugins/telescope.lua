@@ -17,6 +17,8 @@ return {
                 cache_picker = {
                     num_pickers = 5,
                 };
+                sorting_strategy = "ascending",
+                scroll_strategy = "limit",
                 -- mappings = {
                 --     n = {
                 --         ["A-Up"] = "preview_scrolling_up":;
@@ -38,9 +40,12 @@ return {
         _('n', '<leader>ft', function() builtin.lsp_type_definitions() end)
         _('n', '<leader>fi', function() builtin.lsp_implementations({sorting_strategy="ascending"}) end)
         _('n', '<leader>fl', function() builtin.resume() end)
-        _('n', '<leader>fr', function() builtin.lsp_references({sorting_strategy="ascending"}) end)
+        _('n', '<leader>flh', [[:Telescope pickers<CR>]])
+        _('n', '<leader>fr', function() builtin.lsp_references({sorting_strategy="ascending", jump_type="vsplit"}) end)
         _('n', '<leader>fb', function() builtin.buffers() end)
-        _('n', '<leader>fm', [[:Telescope harpoon marks<CR>]])
+        _('n', '<leader>gd', function() builtin.lsp_() end)
+        --_('n', '<leader>fm', [[:Telescope harpoon marks<CR>]])
+        _('n', '<leader>fm', [[:Telescope marks<CR>]])
 
         -- Search for current buffer only
         _('n', '<leader>fgc', function() builtin.live_grep({search_dirs={vim.fn.expand("%:p")}, sorting_strategy="ascending"}) end)
