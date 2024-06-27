@@ -6,8 +6,8 @@
 "set background=
 let g:colors_name="my"
 
-hi Normal	guifg=grey70
-hi Whitespace guifg=#306030
+hi Normal	guifg=grey70 guibg=NvimDark
+hi Whitespace guifg=#306030 guibg=NvimDark
 
 " highlight groups
 hi Cursor	guibg=khaki guifg=slategrey
