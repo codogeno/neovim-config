@@ -45,7 +45,7 @@ return {
         _('n', '<leader>fb', function() builtin.buffers() end)
         _('n', '<leader>gd', function() builtin.lsp_() end)
         --_('n', '<leader>fm', [[:Telescope harpoon marks<CR>]])
-        _('n', '<leader>fm', [[:Telescope marks<CR>]])
+        --_('n', '<leader>fm', [[:Telescope marks<CR>]])
 
         -- Search for current buffer only
         _('n', '<leader>fgc', function() builtin.live_grep({search_dirs={vim.fn.expand("%:p")}, sorting_strategy="ascending"}) end)

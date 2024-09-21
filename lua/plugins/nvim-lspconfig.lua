@@ -139,6 +139,9 @@ local gopls_config = function()
                 usePlaceholders = true,
                 --directoryFilters = filter,
                 expandWorkspaceToModule = false,
+                arcadiaIndexDirs = {
+                    "/home/dude/go/arcadia/games/backend",
+                }
             },
         },
     }
@@ -147,6 +150,12 @@ end
 local function configure_cpp_lsp()
     require('lspconfig').clangd.setup{
         on_attach = on_attach,
+        cmd = {
+            'clangd',
+            '--background-index',
+            '-j=8',
+            '--header-insertion=never',
+        },
     }
 end
 

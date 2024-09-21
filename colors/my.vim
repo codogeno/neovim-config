@@ -6,7 +6,7 @@
 "set background=
 let g:colors_name="my"
 
-hi Normal	guifg=grey70 guibg=NvimDark
+hi Normal	guifg=grey60 guibg=NvimDark
 hi Whitespace guifg=#306030 guibg=NvimDark
 
 " highlight groups
@@ -109,6 +109,10 @@ hi ColorColumn ctermbg=1 guibg=#200000
 hi htmlBoldItalic guibg=bg gui=bold guifg=DarkCyan
 
 hi DiagnosticWarn guifg=#225315
-"
+
+hi LspInlayHint guifg=grey40
+
+hi @variable guifg=grey75
+hi @function guifg=#a0c0a0
 "
 " "vim: sw=4
