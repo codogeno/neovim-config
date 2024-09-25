@@ -1,0 +1,6 @@
+--
+--
+return {
+    'anuvyklack/middleclass'
+}
+
