@@ -12,6 +12,7 @@ end
 
 function PrintArcadiaUrl()
     local fname = vim.api.nvim_buf_get_name(0)
+    local lnum = vim.api.nvim_win_get_cursor(0)[1]
     local arc_root = get_arcadia_root(fname)
 
     if arc_root == nil then
@@ -29,7 +30,7 @@ function PrintArcadiaUrl()
 
     local path_in_arcadia = string.sub(fname, stop + 1)
 
-    print(ARCANUM_BASE_PATH .. path_in_arcadia)
+    print(ARCANUM_BASE_PATH .. path_in_arcadia .. '#L' ..  lnum)
 end
 
 vim.api.nvim_create_user_command("ArcadiaURL", PrintArcadiaUrl, {})
