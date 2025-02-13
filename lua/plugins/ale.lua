@@ -9,5 +9,12 @@ return {
 
         g.ale_echo_msg_format = '[%linter%] %s [%severity%]'
         g.ale_python_flake8_options = '--max-line-length 130'
+        g.ale_lint_on_enter = 0
+        g.ale_lint_on_text_changed = 'never'
+        g.ale_lint_on_insert_leave = 0
+        g.ale_linters = {
+           cpp = {'clangs', 'clangtidy'},
+           -- cpp = {},
+        }
     end,
 }

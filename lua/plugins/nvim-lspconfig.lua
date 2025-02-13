@@ -148,14 +148,23 @@ local gopls_config = function()
 end
 
 local function configure_cpp_lsp()
-    require('lspconfig').clangd.setup{
+    local lspconfig = require("lspconfig")
+
+    lspconfig.clangd.setup{
         on_attach = on_attach,
         cmd = {
             'clangd',
             '--background-index',
-            '-j=8',
+            -- '-j=16',
+            '--clang-tidy',
             '--header-insertion=never',
+            -- '--log=verbose',
         },
+        init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+      },
     }
 end
 
