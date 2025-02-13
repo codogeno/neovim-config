@@ -74,3 +74,12 @@ vim.o.completeopt = "menuone,noselect"
 --vim.lsp.set_log_level("OFF")
 
 
+-- diagnostic
+--vim.diagnostic.config({
+-- signs = true,
+    -- float = {
+    --     header = 'Diagnostics',
+    --     source = true,
+    --     --border = 'rounded',
+    -- },
+--})

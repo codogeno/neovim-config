@@ -40,12 +40,17 @@ _('n', "<leader>'",     "viw<esc>a'<esc>bi'<esc>lel")
 
     -- Move by indentifiers
 _('n', '<C-Right>',     [[:call search('\<\k\+\>\|$')<CR>]], {silent=true})
-_('n', '<C-Left>',      [[:call search('\<\k\+\>', 'bW')<CR>]], {silent=true})
+_('n', '<C-Left>',      [[:call search('\<\k\+\>\|$', 'bW')<CR>]], {silent=true})
+_('n', '<A-l>',         [[:call search('\<\k\+\>\|$')<CR>]], {silent=true})
+_('n', '<A-h>',         [[:call search('\<\k\+\>\|$', 'bW')<CR>]], {silent=true})
 
 _('n', 'Y', [[yy]])
 
 -- Select just pasted block
 _('n', 'gj',            "`[V`]")
+
+-- Move cursor to the end after paste
+_('n', 'p', "p']")
 
 _('n', '<C-Up>',        '<C-y>')
 _('n', '<C-Down>',      '<C-e>')

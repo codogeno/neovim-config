@@ -8,6 +8,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     --buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', opts)
+    buf_set_keymap('n', 'gds', '<cmd>vsplit<CR><cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     --buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations({sorting_strategy="ascending"})<CR>', opts)
@@ -25,6 +26,8 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+    buf_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
     if client.name == 'clangd' then
         buf_set_keymap('n', '<F6>', '<cmd>ClangdSwitchSourceHeader<CR>', opts)
@@ -140,7 +143,7 @@ local gopls_config = function()
                 --directoryFilters = filter,
                 expandWorkspaceToModule = false,
                 arcadiaIndexDirs = {
-                    "/home/dude/go/arcadia/games/backend",
+                    "games/backend",
                 }
             },
         },
@@ -188,6 +191,8 @@ return {
         lsp.lua_ls.setup({})
 
         configure_cpp_lsp()
+
+        -- vim.lsp.set_log_level('trace')
     end,
 }
 
