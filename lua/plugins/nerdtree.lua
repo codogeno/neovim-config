@@ -7,6 +7,7 @@ return {
     config = function()
         vim.g.NERDTreeWinPos = 'right'
         vim.g.NERDChristmasTree = 1
+        vim.g.NERDTreeWinSize = 45
 
         vim.keymap.set('n', '<F12>', ':NERDTreeToggle<CR>', {desc='Toggle NERDTree'})
         vim.keymap.set('n', '<leader>n', ':NERDTreeFind<CR>', {desc='Find the current file in filetree'})

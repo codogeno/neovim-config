@@ -29,7 +29,11 @@ return {
                 map("n","ml", bm.bookmark_list) -- show marked file list in quickfix window
                 map("n","mx", bm.bookmark_clear_all) -- removes all bookmarks
                 map('n', '<leader>fm', [[:Telescope bookmarks list<CR>]])
+
+                vim.api.nvim_create_user_command("BookmarksClearAll", bm.bookmark_clear_all, {})
             end
+
+
         }
     end,
 }

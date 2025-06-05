@@ -71,15 +71,15 @@ opt.smartindent = true    -- autoindent new lines
 
 -- autocomplete
 vim.o.completeopt = "menuone,noselect"
---vim.lsp.set_log_level("OFF")
-
 
 -- diagnostic
---vim.diagnostic.config({
--- signs = true,
+vim.diagnostic.config({
+    virtual_text = true,
+    virtual_lines = true,
+    signs = true,
     -- float = {
     --     header = 'Diagnostics',
     --     source = true,
     --     --border = 'rounded',
     -- },
---})
+})

@@ -48,6 +48,8 @@ return {
         'mfussenegger/nvim-dap',
         dependencies = {
             'ray-x/guihua.lua',
+            'rcarriga/nvim-dap-ui',
+            'nvim-neotest/nvim-nio',
         },
 
         config=function()
@@ -69,8 +71,47 @@ return {
                 type = 'gdb';
                 request = 'launch';
                 name = "Launch file";
+
                 program = function()
                     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end;
+
+                -- args = function()
+                --     local args_string = vim.fn.input('Arguments: ')
+                --     return vim.split(args_string, " +")
+                -- end;
+              },
+              {
+                type = 'gdb';
+                request = 'launch';
+                name = "Launch with args";
+
+                program = function()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end;
+
+                args = function()
+                    local args_string = vim.fn.input('Arguments: ')
+                    return vim.split(args_string, " +")
+                end;
+              },
+              {
+                type = 'gdb';
+                request = 'launch';
+                name = "Launch with args and environment";
+
+                program = function()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end;
+
+                args = function()
+                    local args_string = vim.fn.input('Arguments: ')
+                    return vim.split(args_string, " +")
+                end;
+
+                env = function()
+                    local file_name = vim.fn.input('Env file path: ')
+                    require('env_util').get_env_from_file(file_name)
                 end;
               },
             }
@@ -98,6 +139,10 @@ return {
             dap.listeners.before.launch.dapui_config = function() dapui.open() end
             dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
             dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
+
+            vim.keymap.set('n', '<Leader><Space>', function()
+                dapui.eval(nil)
+            end)
         end,
 
     },

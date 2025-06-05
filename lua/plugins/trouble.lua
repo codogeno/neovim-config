@@ -18,6 +18,6 @@ return {
             width=40,
         }
 
-        vim.keymap.set("n", "<A-t>", function() trouble.toggle() end, {desc="Toggle trouble's window"})
+        vim.keymap.set("n", "<A-t>", '<cmd>Trouble diagnostics toggle<cr>', {desc="Toggle trouble's window"})
     end
 }

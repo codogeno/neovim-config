@@ -155,6 +155,7 @@ local function configure_cpp_lsp()
 
     lspconfig.clangd.setup{
         on_attach = on_attach,
+        filetypes = { "c", "cpp", "cc", "c++" },
         cmd = {
             'clangd',
             '--background-index',
@@ -168,6 +169,29 @@ local function configure_cpp_lsp()
             completeUnimported = true,
             clangdFileStatus = true,
       },
+    }
+end
+
+
+local function  configure_golangci_linter()
+
+    local lspconfig = require 'lspconfig'
+    local configs = require 'lspconfig/configs'
+
+    if not configs.golangcilsp then
+        configs.golangcilsp = {
+            default_config = {
+                cmd = {'golangci-lint-langserver'},
+                root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+                init_options = {
+                        command = { "golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1" };
+                };
+            }
+        }
+    end
+
+    lspconfig.golangci_lint_ls.setup {
+        filetypes = {'go','gomod'}
     }
 end
 
@@ -192,7 +216,9 @@ return {
 
         configure_cpp_lsp()
 
+        -- configure_golangci_linter()
         -- vim.lsp.set_log_level('trace')
     end,
 }
+
 

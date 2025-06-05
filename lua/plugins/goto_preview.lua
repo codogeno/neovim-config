@@ -24,5 +24,6 @@ return {
         _('n', 'gtp', function() require('goto-preview').goto_preview_type_definition() end)
         _('n', 'gip', function() require('goto-preview').goto_preview_implementation() end)
         _('n', 'grp', function() require('goto-preview').goto_preview_references() end)
+        _('n', '<leader>ft', function() require('goto-preview').goto_preview_type_definition() end)
     end,
 }

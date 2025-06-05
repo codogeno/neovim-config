@@ -18,4 +18,6 @@ local function ToggleNumbering()
     numbering_on = not numbering_on
 end
 
+
 vim.api.nvim_create_user_command("ToggleNumbering", ToggleNumbering, {})
+vim.api.nvim_create_user_command("ResetDiagnostic", function() vim.diagnostic.reset() end, {})

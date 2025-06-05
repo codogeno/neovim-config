@@ -12,9 +12,11 @@ return {
         g.ale_lint_on_enter = 0
         g.ale_lint_on_text_changed = 'never'
         g.ale_lint_on_insert_leave = 0
+        g.ale_use_neovim_diagnostics_api = 1
         g.ale_linters = {
            cpp = {'clangs', 'clangtidy'},
-           -- cpp = {},
+           proto = {},
+           go = {'gofmt', 'govet', 'revive'}
         }
     end,
 }
