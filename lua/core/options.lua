@@ -63,6 +63,8 @@ opt.tabstop = 4           -- 1 tab == 4 spaces
 opt.smartindent = true    -- autoindent new lines
 
 
+opt.winborder = 'rounded'
+
 -- С этой строкой отлично форматирует html файл, который содержит jinja2
 --cmd[[ autocmd BufNewFile,BufRead *.html set filetype=htmldjango ]]
 -----------------------------------------------------------
@@ -72,14 +74,3 @@ opt.smartindent = true    -- autoindent new lines
 -- autocomplete
 vim.o.completeopt = "menuone,noselect"
 
--- diagnostic
-vim.diagnostic.config({
-    virtual_text = true,
-    virtual_lines = true,
-    signs = true,
-    -- float = {
-    --     header = 'Diagnostics',
-    --     source = true,
-    --     --border = 'rounded',
-    -- },
-})

@@ -68,3 +68,7 @@ _('n', '<C-k>', '<PageUp>')
 
 _('n', '<C-s>2', '<cmd>set shiftwidth=2<CR>')
 _('n', '<C-s>4', '<cmd>set shiftwidth=4<CR>')
+
+-- Clipboard
+_('n', '<C-Insert>', '"+Y')
+_('n', '<S-Insert>', '"+p')
