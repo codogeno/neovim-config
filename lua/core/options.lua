@@ -4,7 +4,7 @@ local g = vim.g                 -- global variables
 local opt = vim.opt             -- global/buffer/windows-scoped options
 
 opt.syntax = 'true'
-opt.colorcolumn = '130'              -- Разделитель на 130 символов
+opt.colorcolumn = '120'              -- Разделитель на 130 символов
 -- opt.cursorline = true               -- Подсветка строки с курсором
 opt.number = true                   -- Включаем нумерацию строк
 opt.relativenumber = true           -- Вкл. относительную нумерацию строк

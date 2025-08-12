@@ -125,7 +125,7 @@ local gopls_config = function()
             --"--debug=:6060"
             --"-vv",
         },
-        root_dir = root_pattern("ya.make", "go.work", "go.mod", ".git"),
+        root_dir = root_pattern("ya.conf", "go.work", "go.mod", ".git"),
         settings = {
             gopls = {
                 analyses = { unusedparams = true, unusedwrite = true, shadow = true },
