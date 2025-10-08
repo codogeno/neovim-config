@@ -151,83 +151,54 @@ local gopls_config = function()
     }
 end
 
-local function configure_cpp_lsp()
-    local lspconfig = require("lspconfig")
+-- local function configure_cpp_lsp()
+--     local lspconfig = require("lspconfig")
+--
+--     lspconfig.clangd.setup{
+--         on_attach = on_attach,
+--         filetypes = { "c", "cpp", "cc", "c++" },
+--         cmd = {
+--             'clangd',
+--             '--background-index',
+--             -- '-j=16',
+--             '--clang-tidy',
+--             '--header-insertion=never',
+--             -- '--log=verbose',
+--         },
+--         init_options = {
+--             usePlaceholders = true,
+--             completeUnimported = true,
+--             clangdFileStatus = true,
+--       },
+--     }
+-- end
 
-    lspconfig.clangd.setup{
-        on_attach = on_attach,
-        filetypes = { "c", "cpp", "cc", "c++" },
-        cmd = {
-            'clangd',
-            '--background-index',
-            -- '-j=16',
-            '--clang-tidy',
-            '--header-insertion=never',
-            -- '--log=verbose',
-        },
-        init_options = {
-            usePlaceholders = true,
-            completeUnimported = true,
-            clangdFileStatus = true,
-      },
-    }
-end
 
-
-local function  configure_golangci_linter()
-
-    local lspconfig = require 'lspconfig'
-    local configs = require 'lspconfig/configs'
-
-    if not configs.golangcilsp then
-        configs.golangcilsp = {
-            default_config = {
-                cmd = {'golangci-lint-langserver'},
-                root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
-                init_options = {
-                        command = { "golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1" };
-                };
-            }
-        }
-    end
-
-    lspconfig.golangci_lint_ls.setup {
-        filetypes = {'go','gomod'}
-    }
-end
+-- local function  configure_golangci_linter()
+--
+--     local lspconfig = require 'lspconfig'
+--     local configs = require 'lspconfig/configs'
+--
+--     if not configs.golangcilsp then
+--         configs.golangcilsp = {
+--             default_config = {
+--                 cmd = {'golangci-lint-langserver'},
+--                 root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+--                 init_options = {
+--                         command = { "golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1" };
+--                 };
+--             }
+--         }
+--     end
+--
+--     lspconfig.golangci_lint_ls.setup {
+--         filetypes = {'go','gomod'}
+--     }
+-- end
 
 --
 -- Configs for the Nvim LSP client
 --
-return {
+ return {
     'neovim/nvim-lspconfig', -- Collection of configurations for the built-in LSP client
-
-    config = function()
-        local lsp = require('lspconfig')
-        -- local util = require "lspconfig.util"
-
-        lsp.pylsp.setup(pylsp_config())
-        -- lsp.pyright.setup{
-        --     root_dir=function() return '/home/dude/games/admin/arcadia' end
-        -- }
-        lsp.gopls.setup(gopls_config())
-
-        require('lazydev').setup({})
-        lsp.lua_ls.setup({
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
-            }
-        })
-
-        configure_cpp_lsp()
-
-        -- configure_golangci_linter()
-        -- vim.lsp.set_log_level('trace')
-    end,
 }
-
-
