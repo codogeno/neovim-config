@@ -144,6 +144,7 @@ local gopls_config = function()
                 expandWorkspaceToModule = false,
                 arcadiaIndexDirs = {
                     "games/backend",
+                    "games/admin",
                 }
             },
         },
