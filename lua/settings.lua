@@ -117,3 +117,5 @@ vim.lsp.set_log_level("OFF")
 require('plugin_settings/bar_bar')
 require('plugin_settings/NERDTree')
 require('go').setup()
+
+vim.g.lazydev_enabled = true

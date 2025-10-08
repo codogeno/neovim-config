@@ -212,8 +212,16 @@ return {
         -- }
         lsp.gopls.setup(gopls_config())
 
-        require('neodev').setup({})
-        lsp.lua_ls.setup({})
+        require('lazydev').setup({})
+        lsp.lua_ls.setup({
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" }
+                    }
+                }
+            }
+        })
 
         configure_cpp_lsp()
 
