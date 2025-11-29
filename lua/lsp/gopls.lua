@@ -1,19 +1,20 @@
 local config = vim.lsp.config['gopls'] or {}
 
--- config.root_markers = {'ya.conf', unpack(config.root_markers or {})}
-config.cmd = {
-    --"gopls.my",
-    "ya", "tool", "gopls",
-    "-remote=auto",
-    "-logfile=auto",
-    --"-logfile=/home/dude/tmp/gopls.log",
-    "-debug=:0",
-    "-remote.listen.timeout=30s",
-    "-remote.debug=:0",
-    --"-rpc.trace",
-    --"--debug=:6060"
-    --"-vv",
-}
+if string.find(vim.fn.getcwd(), "arcadia") then
+    config.cmd = {
+        --"gopls.my",
+        "ya", "tool", "gopls",
+        "-remote=auto",
+        "-logfile=auto",
+        --"-logfile=/home/dude/tmp/gopls.log",
+        "-debug=:0",
+        "-remote.listen.timeout=30s",
+        "-remote.debug=:0",
+        --"-rpc.trace",
+        --"--debug=:6060"
+        --"-vv",
+    }
+end
 
 config.settings = {
     gopls = {
